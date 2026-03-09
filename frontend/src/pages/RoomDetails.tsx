@@ -33,6 +33,23 @@ const roomData: any = {
         "Comfortable standard room with a queen bed, free WiFi and a private bathroom.",
     image: standardRoom,
     },
+
+5: {
+  name: "Family Suite",
+  price: "$349 / Night",
+  description:
+    "Perfect for families with spacious interiors, relaxing lounge area and premium comfort for a memorable stay.",
+  image: deluxeSuite,
+},
+
+6: {
+  name: "Royal Penthouse",
+  price: "$599 / Night",
+  description:
+    "Ultimate luxury penthouse with private terrace, jacuzzi and breathtaking skyline views.",
+  image: deluxeSuite,
+},
+
 };
 
 const RoomDetails: React.FC = () => {

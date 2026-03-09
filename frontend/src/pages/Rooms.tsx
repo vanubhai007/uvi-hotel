@@ -40,7 +40,7 @@ const Rooms = () => {
       capacity: "2 guests",
       beds: "1 King Bed",
       description:
-        "Spacious suite with separate living area, premium amenities, and stunning views.",
+        "Spacious suite with separate living area and premium amenities.",
       amenities: [
         "City View",
         "Living Area",
@@ -77,7 +77,7 @@ const Rooms = () => {
       capacity: "2 guests",
       beds: "1 Queen Bed",
       description:
-        "Comfortable and well-designed room with all essential amenities for a pleasant stay.",
+        "Comfortable and well-designed room with essential amenities.",
       amenities: [
         "Free WiFi",
         "AC",
@@ -85,6 +85,47 @@ const Rooms = () => {
         "Coffee Station",
         "Work Desk",
       ],
+    },
+
+    // ✅ NEW ROOM 5
+    {
+      id: 5,
+      name: "Family Suite",
+      price: "$349",
+      image: deluxeSuite,
+      size: "65 sqm",
+      capacity: "5 guests",
+      beds: "2 Queen Beds",
+      description:
+        "Perfect for families with spacious interiors and relaxing lounge area.",
+      amenities: [
+        "Family Lounge",
+        "Balcony",
+        "Mini Bar",
+        "Kids Friendly",
+        "Smart TV",
+      ],
+    },
+
+    // ✅ NEW ROOM 6
+    {
+      id: 6,
+      name: "Royal Penthouse",
+      price: "$599",
+      image: deluxeSuite,
+      size: "120 sqm",
+      capacity: "6 guests",
+      beds: "2 King Beds",
+      description:
+        "Ultimate luxury experience featuring private terrace and premium services.",
+      amenities: [
+        "Private Terrace",
+        "Jacuzzi",
+        "Butler Service",
+        "Luxury Lounge",
+        "City Skyline View",
+      ],
+      popular: true,
     },
   ];
 
@@ -108,7 +149,7 @@ const Rooms = () => {
         </div>
       </section>
 
-      {/* All Rooms Include */}
+      {/* Features */}
       <section className="py-12 px-4 bg-muted/30">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-2xl font-semibold text-center mb-8">
@@ -142,6 +183,7 @@ const Rooms = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
+
                   {room.popular && (
                     <Badge className="absolute top-4 right-4 gold-gradient text-primary font-semibold">
                       Most Popular
@@ -150,25 +192,29 @@ const Rooms = () => {
                 </div>
 
                 <CardContent className="p-6">
-                  <div className="flex justify-between items-start mb-4">
+                  <div className="flex justify-between mb-4">
                     <div>
-                      <h3 className="text-2xl font-bold mb-2">{room.name}</h3>
-                      <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                        <div className="flex items-center space-x-1">
+                      <h3 className="text-2xl font-bold mb-2">
+                        {room.name}
+                      </h3>
+
+                      <div className="flex space-x-4 text-sm text-muted-foreground">
+                        <span className="flex items-center gap-1">
                           <Maximize className="w-4 h-4" />
-                          <span>{room.size}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
+                          {room.size}
+                        </span>
+                        <span className="flex items-center gap-1">
                           <Users className="w-4 h-4" />
-                          <span>{room.capacity}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
+                          {room.capacity}
+                        </span>
+                        <span className="flex items-center gap-1">
                           <Bed className="w-4 h-4" />
-                          <span>{room.beds}</span>
-                        </div>
+                          {room.beds}
+                        </span>
                       </div>
                     </div>
-                    <div className="text-right">
+
+                    <div>
                       <span className="text-3xl font-bold text-secondary">
                         {room.price}
                       </span>

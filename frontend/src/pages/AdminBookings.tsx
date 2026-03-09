@@ -15,6 +15,15 @@ interface Booking {
 }
 
 export default function AdminBookings() {
+
+  // 🔐 Admin password protection
+  const password = prompt("Enter Admin Password");
+
+  if (password !== "uviadmin123") {
+    alert("❌ Wrong Password");
+    window.location.href = "/";
+  }
+
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -31,7 +40,7 @@ export default function AdminBookings() {
       });
   }, []);
 
-  // 🔹 Auto calculate nights (fallback)
+  // 🔹 Auto calculate nights
   const getNights = (b: Booking) => {
     if (b.nights && b.nights > 0) return b.nights;
 
@@ -48,12 +57,11 @@ export default function AdminBookings() {
   };
 
   // 🔹 Auto guests fallback
- const getGuests = (b: Booking) => {
-  const g = Number(b.guests);
-  if (!isNaN(g) && g > 0) return g;
-  return 1; // default guest count
-};
-
+  const getGuests = (b: Booking) => {
+    const g = Number(b.guests);
+    if (!isNaN(g) && g > 0) return g;
+    return 1;
+  };
 
   if (loading) {
     return <p style={{ padding: 20 }}>Loading bookings...</p>;
@@ -62,7 +70,7 @@ export default function AdminBookings() {
   return (
     <div style={{ padding: "30px" }}>
       <h1 style={{ fontSize: "28px", fontWeight: "bold", marginBottom: "20px" }}>
-        📋 Uvi hotel– Booking List
+        📋 Uvi Hotel – Booking List
       </h1>
 
       <table
@@ -96,8 +104,8 @@ export default function AdminBookings() {
               <td style={td}>{b.roomType}</td>
               <td style={td}>{b.checkIn || "-"}</td>
               <td style={td}>{b.checkOut || "-"}</td>
-              <td style={td}>{getNights(b)}</td> {/* ✅ auto */}
-              <td style={td}>{getGuests(b)}</td> {/* ✅ auto */}
+              <td style={td}>{getNights(b)}</td>
+              <td style={td}>{getGuests(b)}</td>
               <td style={td}>
                 {new Date(b.createdAt).toLocaleString()}
               </td>
